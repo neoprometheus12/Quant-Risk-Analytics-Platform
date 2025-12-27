@@ -74,7 +74,7 @@ c4.metric("Rolling Volatility", f"{data['rolling_vol'].iloc[-1]:.4%}")
 c5.metric("GARCH Volatility", f"{garch_vol.iloc[-1]:.4%}")
 
 # -------------------- RETURNS --------------------
-st.subheader("📈 Daily Log Returns")
+st.subheader("Daily Log Returns")
 st.plotly_chart(px.line(returns, title="Daily Log Returns"),
                 use_container_width=True)
 
@@ -108,7 +108,7 @@ fig_hist.add_vline(x=gaussian_var, line_dash="dot",
 st.plotly_chart(fig_hist, use_container_width=True)
 
 # -------------------- QQ PLOT --------------------
-st.subheader("📐 QQ Plot (Fat-Tail Diagnosis)")
+st.subheader("QQ Plot (Fat-Tail Diagnosis)")
 
 theoretical_q, empirical_q = stats.probplot(returns, dist="norm")[0]
 
@@ -168,6 +168,7 @@ st.write(
 # -------------------- GARCH MODEL SUMMARY --------------------
 with st.expander("GARCH(1,1) Model Summary"):
     st.text(garch_result.summary())
+
 
 
 
