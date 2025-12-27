@@ -63,7 +63,7 @@ mu, sigma = returns.mean(), returns.std()
 gaussian_var = stats.norm.ppf(1 - confidence_level, mu, sigma)
 
 # -------------------- METRICS --------------------
-st.subheader("📌 Risk Metrics")
+st.subheader("Risk Metrics")
 
 c1, c2, c3, c4, c5 = st.columns(5)
 
@@ -79,7 +79,7 @@ st.plotly_chart(px.line(returns, title="Daily Log Returns"),
                 use_container_width=True)
 
 # -------------------- VOLATILITY COMPARISON --------------------
-st.subheader("📉 Volatility Comparison")
+st.subheader("Volatility Comparison")
 
 vol_df = pd.DataFrame({
     "Rolling Volatility": data["rolling_vol"],
@@ -92,7 +92,7 @@ st.plotly_chart(
 )
 
 # -------------------- RETURN DISTRIBUTION --------------------
-st.subheader("📊 Return Distribution & Tail Risk")
+st.subheader("Return Distribution & Tail Risk")
 
 fig_hist = px.histogram(
     returns, nbins=100, marginal="box",
@@ -126,7 +126,7 @@ fig_qq.add_trace(go.Scatter(
 st.plotly_chart(fig_qq, use_container_width=True)
 
 # -------------------- NORMALITY TESTS --------------------
-st.subheader("🧪 Normality Tests")
+st.subheader("Normality Tests")
 
 jb_stat, jb_p = stats.jarque_bera(returns)
 sample_n = min(5000, len(returns))
@@ -139,7 +139,7 @@ st.dataframe(pd.DataFrame({
 }))
 
 # -------------------- ROLLING VAR --------------------
-st.subheader("⏱️ Rolling Historical VaR")
+st.subheader("Rolling Historical VaR")
 
 rolling_var = returns.rolling(rolling_window).quantile(1 - confidence_level)
 
@@ -149,7 +149,7 @@ st.plotly_chart(
 )
 
 # -------------------- DOWNSIDE RISK --------------------
-st.subheader("📉 Downside Risk")
+st.subheader("Downside Risk")
 
 downside_returns = returns[returns < 0]
 downside_vol = np.sqrt(downside_returns.var())
@@ -157,7 +157,7 @@ downside_vol = np.sqrt(downside_returns.var())
 st.metric("Downside Volatility", f"{downside_vol:.4%}")
 
 # -------------------- STRESS SCENARIO --------------------
-st.subheader("🚨 Stress Scenario")
+st.subheader("Stress Scenario")
 
 st.write(
     f"A **{shock_pct*100:.1f}%** shock corresponds to "
@@ -166,7 +166,8 @@ st.write(
 )
 
 # -------------------- GARCH MODEL SUMMARY --------------------
-with st.expander("📄 GARCH(1,1) Model Summary"):
+with st.expander("GARCH(1,1) Model Summary"):
     st.text(garch_result.summary())
+
 
 
