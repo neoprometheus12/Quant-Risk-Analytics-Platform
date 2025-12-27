@@ -9,7 +9,7 @@ from arch import arch_model
 
 # -------------------- PAGE CONFIG --------------------
 st.set_page_config(page_title="Quant Risk Analytics Platform", layout="wide")
-st.title("📊 Quant Risk Analytics Platform")
+st.title("Quant Risk Analytics Platform")
 
 # -------------------- SIDEBAR --------------------
 st.sidebar.header("Controls")
@@ -168,4 +168,5 @@ st.write(
 # -------------------- GARCH MODEL SUMMARY --------------------
 with st.expander("📄 GARCH(1,1) Model Summary"):
     st.text(garch_result.summary())
+
 
