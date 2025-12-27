@@ -168,3 +168,15 @@ st.write(
 # -------------------- GARCH MODEL SUMMARY --------------------
 with st.expander("📄 GARCH(1,1) Model Summary"):
     st.text(garch_result.summary())
+
+# -------------------- INTERPRETATION --------------------
+st.subheader("🧠 Interpretation")
+
+st.markdown("""
+- Returns exhibit **fat tails and non-normality**, confirmed by QQ plots and statistical tests.
+- **Historical VaR exceeds Gaussian VaR**, highlighting model risk.
+- **Expected Shortfall** captures extreme tail losses ignored by volatility.
+- **Rolling volatility** reflects descriptive risk, while **GARCH volatility** provides model-based conditional risk.
+- Volatility is **persistent and clustered**, justifying the use of GARCH models.
+- Stress scenarios contextualize extreme shocks relative to historical risk.
+""")
